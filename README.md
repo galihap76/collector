@@ -9,6 +9,7 @@ git clone https://github.com/galihap76/collector.git
 # Features
 - Information gathering in phone numbers
 - Information gathering in account github
+- Information gathering in ip address
 - Information gathering in email (coming soon)
 - Information gathering in instagram (coming soon)
 - Finding vulnerability server (coming soon)
@@ -83,6 +84,52 @@ main.py -g Aldi098
 [+] Subscriptions Url : https://api.github.com/users/Aldi098/subscriptions
 ```
 
-# Libraries
+# Osint Ip Address
+```
+main.py -i 103.175.206.70
+           _ _           _
+  ___ ___ | | | ___  ___| |_ ___  _ __
+ / __/ _ \| | |/ _ \/ __| __/ _ \| '__|
+| (_| (_) | | |  __/ (__| || (_) | |
+ \___\___/|_|_|\___|\___|\__\___/|_|
+
+
+[>] Coded By Galih Ap
+
+
+[!] Fetching On Ip : 103.175.206.70
+[+] ip :  103.175.206.70
+[+] version :  IPv4
+[+] city :  Palembang
+[+] region :  South Sumatra
+[+] region_code :  SS
+[+] country :  ID
+[+] country_name :  Indonesia
+[+] country_code :  ID
+[+] country_code_iso3 :  IDN
+[+] country_capital :  Jakarta
+[+] country_tld :  .id
+[+] continent_code :  AS
+[+] in_eu :  False
+[+] postal :  None
+[+] latitude :  -2.9702
+[+] longitude :  104.747
+[+] timezone :  Asia/Jakarta
+[+] utc_offset :  +0700
+[+] country_calling_code :  +62
+[+] currency :  IDR
+[+] currency_name :  Rupiah
+[+] languages :  id,en,nl,jv
+[+] country_area :  1919440.0
+[+] country_population :  267663435
+[+] asn :  AS147124
+[+] org :  PT Hostingan Awan Indonesia
+```
+
+# Libraries & Api
 - <a href="https://pypi.org/project/requests/">Requests</a>
 - <a href="https://pypi.org/project/phonenumbers/">Phone numbers</a>
+- <a href="https://ipapi.co/">Ipapi</a>
+
+# Note
+I keep develop this tool if you want use this tool just git clone.
