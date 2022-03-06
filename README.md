@@ -10,11 +10,6 @@ git clone https://github.com/galihap76/collector.git
 - Information gathering in phone numbers
 - Information gathering in account github
 - Information gathering in ip address
-- Information gathering in email (coming soon)
-- Information gathering in instagram (coming soon)
-- Finding vulnerability server (coming soon)
-- Scanner subdomains (coming soon)
-- Scanner port (coming soon)
 
 # Osint Phonenumber
 ```
