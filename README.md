@@ -10,7 +10,7 @@ git clone https://github.com/galihap76/collector.git
 - Information gathering in phone numbers
 - Information gathering in account github
 - Information gathering in ip address
-- Informaton gathering in account instagram
+- Information gathering in account instagram
 
 # Tested On
 - Windows
