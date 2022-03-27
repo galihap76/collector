@@ -1,89 +1,71 @@
-import phonenumbers, argparse, requests, re
-from phonenumbers import timezone, geocoder, carrier
-from cfonts import render
-from termcolor import colored
-from colorama import  Fore, Style
-from pyfiglet import Figlet
+#!/usr/bin/env python3
+import argparse, requests, re, lib
+from lib.cfonts import render
+from lib.pyfiglet import Figlet
+from lib.colorama import Fore, Style
+from lib.InstagramOSINT import *
+from lib.phonenumbers import carrier
+from lib.phonenumbers import geocoder
+from lib.phonenumbers import phonenumber
+from lib.phonenumbers import timezone
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--number', type=str, help='do information gathering on phone numbers')
 parser.add_argument('-g', '--github', type=str, help='do information gathering on account github')
 parser.add_argument('-i', '--ip', type=str, help='do information gathering on ip')
+parser.add_argument('-ig', '--instagram', type=str, help='do information gathering on instagram')
 args = parser.parse_args()
 
 def Banner():
     f = Figlet(font='standard')
-    print(colored(f.renderText('collector'), 'green'))
-    print(colored("[>] Coded By Galih Ap", 'green'))
+    print(Fore.GREEN + f.renderText('collector'))
+    print(Fore.GREEN + "[>] Coded By Galih Ap")
     print("\n")
 
 def Main():
     Banner()
     if args.number:
-        try: 
-            phone_number = phonenumbers.parse(args.number)
-            phone_number_national = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.NATIONAL)
-            phone_number_international = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+        try:
+            phone_number = lib.phonenumbers.parse(args.number)
+            phone_number_national = lib.phonenumbers.format_number(phone_number, lib.phonenumbers.PhoneNumberFormat.NATIONAL)
+            phone_number_international = lib.phonenumbers.format_number(phone_number, lib.phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             ISP = carrier.name_for_number(phone_number, 'en')
             Time_zone = timezone.time_zones_for_number(phone_number) 
             Country = geocoder.country_name_for_number(phone_number, 'en')
             Location = geocoder.description_for_number(phone_number, 'en') 
-            print(colored(f"[!] Fetching Phone Number : {args.number}", 'yellow'))
-            print(colored(f"[+] {phone_number}", 'green'))
-            print(colored(f"[+] International Format : {phone_number_international}", 'green'))           
-            print(colored(f"[+] National Format : {phone_number_national}", 'green'))           
-            print(colored(f"[+] Time Zone : {Time_zone}", 'green'))
-            print(colored(f"[+] ISP : {ISP}", 'green'))
-            print(colored(f"[+] Country Found : {Country}", 'green'))
-            print(colored(f"[+] Location : {Location}", 'green'))
+            print(Fore.YELLOW + f"[!] Fetching Phone Number : {args.number}")
+            print(Fore.GREEN + f"[+] {phone_number}")
+            print(Fore.GREEN + f"[+] International Format : {phone_number_international}")        
+            print(Fore.GREEN + f"[+] National Format : {phone_number_national}")           
+            print(Fore.GREEN + f"[+] Time Zone : {Time_zone}")
+            print(Fore.GREEN + f"[+] ISP : {ISP}")
+            print(Fore.GREEN + f"[+] Country Found : {Country}")
+            print(Fore.GREEN + f"[+] Location : {Location}")
         except KeyboardInterrupt:
-            print(colored("[-] Exit", 'red'))
-        except phonenumbers.phonenumberutil.NumberParseException:
-            print(colored("[-] WRONG COMMAND!", 'red'))
-            print(colored("[!] Example you must enterred : +62xxxxx", 'yellow'))
-            
+            print(Fore.RED + "[-] Exit")
+        except lib.phonenumbers.phonenumberutil.NumberParseException:
+            print(Fore.RED + "[-] WRONG COMMAND!")
+            print(Fore.YELLOW + "[!] Example you must enterred like this : +62xxxxx")
+        except KeyboardInterrupt:
+            print(Fore.RED + "[-] Exit")
+    
     elif args.github:
-            try:
-                username = args.github
-                url = f'https://api.github.com/users/{username}'
-                response = requests.get(url)
-                if response.status_code == 200 and requests.codes.ok:
-                    data = response.json()
-                    print(colored(f"[!] Fetching Github Username : {username}", 'yellow'))
-                    print(colored(f"[+] Name : {data['name']}", 'green'))
-                    print(colored(f"[+] Id : {data['id']}", 'green'))
-                    print(colored(f"[+] Node Id : {data['node_id']}", 'green'))
-                    print(colored(f"[+] Gravatar Id : {data['gravatar_id']}", 'green'))
-                    print(colored(f"[+] Bio : {data['bio']}", 'green'))
-                    print(colored(f"[+] Location : {data['location']}", 'green'))
-                    print(colored(f"[+] Email : {data['email']}", 'green'))
-                    print(colored(f"[+] Twitter Username : {data['twitter_username']}", 'green'))
-                    print(colored(f"[+] Company : {data['company']}", 'green'))
-                    print(colored(f"[+] Type : {data['type']}", 'green'))
-                    print(colored(f"[+] Blog : {data['blog']}", 'green'))
-                    print(colored(f"[+] Followers : {data['followers']}", 'green'))
-                    print(colored(f"[+] Following : {data['following']}", 'green'))
-                    print(colored(f"[+] Public Gists : {data['public_gists']}", 'green'))
-                    print(colored(f"[+] Public Repos : {data['public_repos']}", 'green'))
-                    print(colored(f"[+] Created At : {data['created_at']}", 'green'))
-                    print(colored(f"[+] Updated At : {data['updated_at']}", 'green'))
-                    print(colored(f"[+] Organizations : {data['organizations_url']}", 'green'))
-                    print(colored(f"[+] Url : {data['url']}", 'green'))
-                    print(colored(f"[+] Html Url : {data['html_url']}", 'green'))
-                    print(colored(f"[+] Avatar Url : {data['avatar_url']}", 'green'))
-                    print(colored(f"[+] Followers Url : {data['followers_url']}", 'green'))
-                    print(colored(f"[+] Following Url : {data['following_url']} (You Must Copy Like This )--> https://api.github.com/users/{username}/following", 'green'))
-                    print(colored(f"[+] Events Url : {data['events_url']} (You Must Copy Like This )--> https://api.github.com/users/{username}/events", 'green'))
-                    print(colored(f"[+] Received Events Url : {data['received_events_url']} (You Must Copy Like This )--> https://api.github.com/users/{username}/received_events", 'green'))
-                    print(colored(f"[+] Gists Url : {data['gists_url']} (You Must Copy Like This )--> https://api.github.com/users/{username}/gists", 'green'))
-                    print(colored(f"[+] Starred Url : {data['starred_url']} (You Must Copy Like This )--> https://api.github.com/users/{username}/starred", 'green'))
-                    print(colored(f"[+] Repos Url : {data['repos_url']}", 'green'))
-                    print(colored(f"[+] Subscriptions Url : {data['subscriptions_url']}", 'green'))
-            except requests.exceptions.ConnectionError:
-                print(colored("[-] Error connecting", 'red'))
-            except KeyboardInterrupt:
-                print(colored("[-] Exit", 'red'))
-                
+        try:
+            username = args.github
+            url = f'https://api.github.com/users/{username}'
+            response = requests.get(url)
+            if response.status_code == 200 and requests.codes.ok:
+                data = response.json()
+                print(Fore.YELLOW + f'[!] Fetching On Account Github : {username}')
+                for i in data:
+                    print(Fore.GREEN + f'[+] {i} : ',data[i])
+        except KeyboardInterrupt:
+            print(Fore.RED + '[-] Exit')
+        except requests.exceptions.ConnectionError:
+            print(Fore.RED + "[-] Error connecting!")
+        except ValueError:
+            print(Fore.RED + '[-] Ip address not valid!')
+            
     elif args.ip:
         try:
             if True:           
@@ -94,8 +76,7 @@ def Main():
                 match = re.match(r"^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$", ip)
                 for valid in ip.split('.'):
                     if int(valid) < 0 or int(valid) > 255 or int(valid) == 0000:
-                        print(colored('[-] Ip address not valid!', 'red'))
-                        print(Fore.GREEN + '-------------INFO-------------')
+                        print(Fore.RED + '-------------INFO-------------')
                         break
                         exit
                 print(Fore.YELLOW + f'[!] Fetching On Ip : {ip}')
@@ -104,10 +85,30 @@ def Main():
         except KeyboardInterrupt:
             print(Fore.RED + '[-] Exit')
         except requests.exceptions.ConnectionError:
-            print(colored("[-] Error connecting", 'red'))
+            print(Fore.RED + "[-] Error connecting")
         except ValueError:
-            print(colored('[-] Ip address not valid!', 'red'))
-            
-            
+            print(Fore.RED + '[-] Ip address not valid!')
+    
+    elif args.instagram:
+        try:
+            user_instagram = InstagramOSINT(username=args.instagram)
+            data_ig = user_instagram.profile_data
+            print(Fore.YELLOW + f'[!] {user_instagram}')
+            for i in data_ig:
+                print(Fore.GREEN + f'[+] {i} : ',data_ig[i])
+            user_instagram.scrape_posts()
+            user_instagram.save_data()
+            user_instagram.warning_saved()
+        except requests.exceptions.ConnectionError:
+            print(Fore.RED + "[-] Error connecting")
+        except NameError:
+            print(Fore.RED + '[-] Not found!')
+        except KeyboardInterrupt:
+            user_instagram.save_data()
+            print(Fore.RED + '[-] Exit')
+            user_instagram.warning_saved()
+        except FileExistsError:
+            print(Fore.RED + '[-] You need to remove directory on output saved from data instagram if you want to do osint instagram again!')
+
 if __name__ == "__main__":
     Main()
