@@ -10,6 +10,7 @@ git clone https://github.com/galihap76/collector.git
 - Information gathering in phone numbers
 - Information gathering in account github
 - Information gathering in ip address
+- Informaton gathering in account instagram
 
 # Osint Phonenumber
 ```
@@ -121,10 +122,46 @@ main.py -i 103.175.206.70
 [+] org :  PT Hostingan Awan Indonesia
 ```
 
+## Osint Account Instagram
+```
+main.py -ig fififebs_
+           _ _           _
+  ___ ___ | | | ___  ___| |_ ___  _ __
+ / __/ _ \| | |/ _ \/ __| __/ _ \| '__|
+| (_| (_) | | |  __/ (__| || (_) | |
+ \___\___/|_|_|\___|\___|\__\___/|_|
+
+
+[>] Coded By Galih Ap
+
+
+[!] Current Username: fififebs_
+[+] Username :  fififebs_
+[+] Profile name :  F I F I
+[+] URL :  https://www.instagram.com/fififebs_/
+[+] Followers :  819
+[+] Following :  449
+[+] Posts :  18
+[+] Bio :  @i.ipannn
+Pacitan, JawaTimur
+[+] profile_pic_url :  https://instagram.fsub1-1.fna.fbcdn.net/v/t51.2885-19/272302451_305094728323588_2569970795589902015_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fsub1-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=b0Y7ZAavZHYAX_JKUyx&edm=ABfd0MgBAAAA&ccb=7-4&oh=00_AT-EQQHbNO4wgCWX8-h0rmjWb6P2lET-1hOhSNz6N8RCKA&oe=6247259D&_nc_sid=7bff83
+[+] is_business_account :  True
+[+] connected_to_fb :  None
+[+] externalurl :  None
+[+] joined_recently :  False
+[+] business_category_name :  Creators & Celebrities
+[+] is_private :  False
+[+] is_verified :  False
+[+] Saved data to directory C:\Users\galihap\collector\fififebs_
+[!] If you want do again please remove from saved instagram OSINT!
+```
+If you do OSINT on instagram automatically you have photo result on scraping.
+
 # Libraries & Api
 - <a href="https://pypi.org/project/requests/">Requests</a>
 - <a href="https://pypi.org/project/phonenumbers/">Phone numbers</a>
 - <a href="https://ipapi.co/">Ipapi</a>
+- <a href="https://github.com/sc1341/InstagramOSINT">Instagram OSINT</a>
 
 # Note
 I keep develop this tool if you want use this tool just git clone.
