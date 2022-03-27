@@ -12,6 +12,10 @@ git clone https://github.com/galihap76/collector.git
 - Information gathering in ip address
 - Informaton gathering in account instagram
 
+# Tested On
+- Windows
+- Kali Linux
+
 # Osint Phonenumber
 ```
 main.py -n +6287848791960
