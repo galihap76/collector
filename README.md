@@ -161,7 +161,7 @@ main.py -ig hacker_zonetamil
 ```
 If you do OSINT on instagram automatically you have photo the people and saved on your directory.
 
-**The Result Profile Picture**
+**The Result On Profile Picture**
 
 ![profile_pic](https://user-images.githubusercontent.com/83481679/160291536-b9cc50de-d5fe-4288-971d-cfc6d3150c19.jpg)
 
