@@ -1,0 +1,6 @@
+phonenumbers==8.12.45
+colorama==0.4.4
+bs4==0.0.1
+pyfiglet==0.8.post1
+requests==2.27.1
+python-cfonts==1.5.2
