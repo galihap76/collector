@@ -100,7 +100,7 @@ main.py -ig hacker_zonetamil
 [+] Saved data to directory C:\Users\galihap\collector\hacker_zonetamil
 [!] If you want do again please remove from saved instagram OSINT!
 ```
-> If you do OSINT on instagram automatically you have photo the people and saved on your directory and If you want do again please remove from saved instagram OSINT. Don't forget about this!
+> If you do OSINT on instagram automatically you have photo the people and saved on your directory and last if you want do again please remove from saved instagram OSINT. Don't forget about this!
 
 **The Result On Profile Picture**
 
