@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import argparse, requests, re, lib
 from lib.cfonts import render
-from lib.pyfiglet import Figlet
 from lib.colorama import Fore, Style
 from lib.InstagramOSINT import *
 from lib.phonenumbers import carrier
@@ -17,8 +16,14 @@ parser.add_argument('-ig', '--instagram', type=str, help='do information gatheri
 args = parser.parse_args()
 
 def Banner():
-    f = Figlet(font='standard')
-    print(Fore.GREEN + f.renderText('collector'))
+    print(Fore.GREEN + """
+           _ _           _
+  ___ ___ | | | ___  ___| |_ ___  _ __
+ / __/ _ \| | |/ _ \/ __| __/ _ \| '__|
+| (_| (_) | | |  __/ (__| || (_) | |
+ \___\___/|_|_|\___|\___|\__\___/|_|
+    
+    """)
     print(Fore.GREEN + "[>] Coded By Galih Ap")
     print("\n")
 
@@ -107,6 +112,10 @@ def Main():
             user_instagram.save_data()
             print(Fore.RED + '[-] Exit')
             user_instagram.warning_saved()
+        except IndexError:
+            user_instagram.save_data()
+            user_instagram.warning_saved()
+            pass
         except FileExistsError:
             print(Fore.RED + '[-] You need to remove directory on output saved from data instagram if you want to do osint instagram again!')
 
