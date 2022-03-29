@@ -2,8 +2,21 @@
 Collector is a tool for osint (open source intelligence) i build this tool for myself and for you if you want use this tool. Collector has been updated but i keep develop this tool to add some features again.
 
 # Install
+**Windows & Kali Linux**
 ```
 git clone https://github.com/galihap76/collector.git
+cd collector 
+pip install -r requirements.txt
+```
+
+# Usage
+**Windows**
+```
+main.py -h
+```
+**Kali Linux**
+```
+python3 main.py -h
 ```
 
 # Features
