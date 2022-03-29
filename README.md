@@ -1,5 +1,5 @@
 # Collector
-Collector is a tool for osint (open source intelligence) i build this tool for myself and for you if you want use this tool. Collector has been updated but i keep develop this tool to add some features again.
+Collector is a tool OSINT (open source intelligence) and information gathering. I build this tool for myself and for you if you want use this tool i keep develop this tool to add some features again.
 
 # Tested On
 - Windows
@@ -113,6 +113,7 @@ main.py -ig hacker_zonetamil
 
 # Libraries & Api
 - <a href="https://pypi.org/project/requests/">Requests</a>
+- <a href="https://api.github.com/">Api github</a>
 - <a href="https://pypi.org/project/phonenumbers/">Phone numbers</a>
 - <a href="https://ipapi.co/">Ipapi</a>
 - <a href="https://github.com/sc1341/InstagramOSINT">Instagram OSINT</a>
