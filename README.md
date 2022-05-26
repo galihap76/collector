@@ -39,8 +39,7 @@ python3 main.py -h
 - Information gathering in ip address
 - Information gathering in account instagram
 
-# Example
-**Osint Phonenumber**
+# Screenshot
 ![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/170544327-ddd71936-a5c9-490c-ba4d-c26c8feb277f.png)
 
 # Libraries & Api
