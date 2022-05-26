@@ -15,12 +15,12 @@ pip install -r requirements.txt
 ```
 **Termux**
 ```
-$pkg update && pkg upgrade
-$pkg install python3
-$pkg install git
-$git clone https://github.com/galihap76/collector.git
-$cd collector
-$pip install -r requirements.txt
+pkg update && pkg upgrade
+pkg install python3
+pkg install git
+git clone https://github.com/galihap76/collector.git
+cd collector
+pip install -r requirements.txt
 ```
 
 # Usage
@@ -41,27 +41,7 @@ python3 main.py -h
 
 # Example
 **Osint Phonenumber**
-```
-main.py -n +6287848791960
-           _ _           _
-  ___ ___ | | | ___  ___| |_ ___  _ __
- / __/ _ \| | |/ _ \/ __| __/ _ \| '__|
-| (_| (_) | | |  __/ (__| || (_) | |
- \___\___/|_|_|\___|\___|\__\___/|_|
-
-
-[>] Coded By Galih Ap
-
-
-[!] Fetching Phone Number : +6287848791960
-[+] Country Code: 62 National Number: 87848791960
-[+] International Format : +62 878-4879-1960
-[+] National Format : 0878-4879-1960
-[+] Time Zone : ('Asia/Jakarta',)
-[+] ISP : XL
-[+] Country Found : Indonesia
-[+] Location : Indonesia
-```
+![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/170544327-ddd71936-a5c9-490c-ba4d-c26c8feb277f.png)
 
 # Libraries & Api
 - <a href="https://pypi.org/project/requests/">Requests</a>
