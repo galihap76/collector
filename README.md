@@ -7,13 +7,12 @@ Collector is a tool OSINT (open source intelligence) and information gathering. 
 - Termux
 
 # Install
-**Windows & Kali Linux**
 ```
 git clone https://github.com/galihap76/collector.git
 cd collector 
 pip install -r requirements.txt
 ```
-**Termux**
+For termux :
 ```
 pkg update && pkg upgrade
 pkg install python3
@@ -24,11 +23,6 @@ pip install -r requirements.txt
 ```
 
 # Usage
-**Windows**
-```
-main.py -h
-```
-**Kali Linux & Termux**
 ```
 python3 main.py -h
 ```
