@@ -40,7 +40,11 @@ python3 main.py -h
 - Information gathering account instagram
 
 # Screenshots
+**Osint phone number**
 ![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/172418445-66430140-a905-430b-99af-da23817172c2.png) 
-![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png) 
+**Osint account github**
+![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
+**Osint ip address**
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
+**Osint account instagram
 ![instagram-collector 1](https://user-images.githubusercontent.com/83481679/172419798-98013374-d6ab-4f46-8e7b-6e4f8803a709.png)
