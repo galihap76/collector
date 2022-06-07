@@ -1,5 +1,7 @@
 # Collector
-Collector is a tool OSINT (open source intelligence) and information gathering. I build this tool for myself but you can use my tool for do OSINT and modify my script.
+[![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
+[![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
+Collector is a OSINT tool and information gathering. I build this tool for myself but you can use my tool for do OSINT.
 
 # Tested On
 - Windows
