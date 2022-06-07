@@ -7,12 +7,12 @@ Collector is a OSINT tool and information gathering. I build this tool for mysel
 
 ![carbon (1)](https://user-images.githubusercontent.com/83481679/172416739-1e3b4bbf-ac83-4206-b0d7-8156abaac9aa.png)
 
-# Tested On ⚒️
+# Tested On 
 - Windows
 - Kali Linux
 - Termux
 
-# Install ⚙️
+# Install 
 ```
 git clone https://github.com/galihap76/collector.git
 cd collector 
@@ -28,12 +28,12 @@ cd collector
 pip install -r requirements.txt
 ```
 
-# Usage 🧤
+# Usage 
 ```
 python3 main.py -h
 ```
 
-# Features 🔖
+# Features 
 - Information gathering phone numbers
 - Information gathering account github
 - Information gathering ip address
