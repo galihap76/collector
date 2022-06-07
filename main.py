@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse, requests, instaloader, lib
 from lib.instaloader import *
 from lib.phonenumbers import carrier
@@ -94,7 +95,7 @@ class COLLECTOR:
                 print("[+] User ID : ", profile.userid)
                 print("[+] Number of Posts : ", profile.mediacount)
                 print("[+] Followers : ", profile.followers)
-                print("[+] Followees : ", profile.followees)
+                print("[+] Following : ", profile.followees)
                 print("[+] Bio : ", profile.biography,profile.external_url)
                 print(f'[+] Is business account : {business}')
                 print(f'[+] Business type : {business_type}')
