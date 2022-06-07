@@ -26,8 +26,7 @@ class COLLECTOR:
  \___\___/|_|_|\___|\___|\__\___/|_|
     
     """)
-      
-        
+            
     #this is main function
     def Main(self):
         if args.number:
@@ -49,8 +48,7 @@ class COLLECTOR:
             except KeyboardInterrupt:
                 print("[-] Exit")
             except lib.phonenumbers.phonenumberutil.NumberParseException:
-                print("[-] Wrong command")
-                print("[!] Example you must enterred like this : +62xxxxx")
+                print("[-] Can't detect")
                 
         elif args.github:
             try:
@@ -82,19 +80,27 @@ class COLLECTOR:
                 
         elif args.instagram:
             try:
-                print('[!] Waiting for scrape...')
+                print('[!] Waiting...')
                 bot = instaloader.Instaloader()
                 username = args.instagram
                 profile = instaloader.Profile.from_username(bot.context, username)
                 posts = profile.get_posts()
-                bot.download_profile(username, profile_pic_only = True)
+                private = profile.is_private
+                business = profile.is_business_account
+                url = profile.external_url
+                business_type = profile.business_category_name
                 profile = instaloader.Profile.from_username(bot.context, username)
-                print("[+] Username: ", profile.username)
-                print("[+] User ID: ", profile.userid)
-                print("[+] Number of Posts: ", profile.mediacount)
-                print("[+] Followers: ", profile.followers)
-                print("[+] Followees: ", profile.followees)
-                print("[+] Bio: ", profile.biography,profile.external_url)
+                print("[+] Username : ", profile.username)
+                print("[+] User ID : ", profile.userid)
+                print("[+] Number of Posts : ", profile.mediacount)
+                print("[+] Followers : ", profile.followers)
+                print("[+] Followees : ", profile.followees)
+                print("[+] Bio : ", profile.biography,profile.external_url)
+                print(f'[+] Is business account : {business}')
+                print(f'[+] Business type : {business_type}')
+                print(f'[+] External url : {url}')
+                print(f'[+] Is private : {private}')
+                bot.download_profile(username, profile_pic_only = True)
                 for index, post in enumerate(posts, 1):
                     bot.download_post(post, target=f"{profile.username}_{index}")
             except KeyboardInterrupt:

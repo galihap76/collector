@@ -1298,7 +1298,7 @@ class Instaloader:
                                                 target=profile.username), exist_ok=True)
         with open(self._get_id_filename(profile.username), 'w') as text_file:
             text_file.write(str(profile.userid) + "\n")
-            self.context.log("Stored ID {0} for profile {1}.".format(profile.userid, profile.username))
+            self.context.log("[+] Stored ID {0} for profile {1}.".format(profile.userid, profile.username))
 
     def check_profile_id(self, profile_name: str, latest_stamps: Optional[LatestStamps] = None) -> Profile:
         """
