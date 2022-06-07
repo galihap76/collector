@@ -1,4 +1,4 @@
-# Collector
+# Collector 🔎
 
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
@@ -12,7 +12,7 @@ Collector is a OSINT tool and information gathering. I build this tool for mysel
 - Kali Linux
 - Termux
 
-# Install
+# Install 
 ```
 git clone https://github.com/galihap76/collector.git
 cd collector 
@@ -40,4 +40,7 @@ python3 main.py -h
 - Information gathering account instagram
 
 # Screenshots
-![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/172418445-66430140-a905-430b-99af-da23817172c2.png) | ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png) | ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) | ![instagram-collector 1](https://user-images.githubusercontent.com/83481679/172419798-98013374-d6ab-4f46-8e7b-6e4f8803a709.png)
+![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/172418445-66430140-a905-430b-99af-da23817172c2.png) 
+![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png) 
+![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
+![instagram-collector 1](https://user-images.githubusercontent.com/83481679/172419798-98013374-d6ab-4f46-8e7b-6e4f8803a709.png)
