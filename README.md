@@ -38,7 +38,7 @@ python3 main.py -h
 
 You can do this on some phone numbers and get isp, country, time zone, country code, national number and international number.
 
-**-Information gathering account github**
+**-Information gathering github account**
 
 You can do this on github account and get location, type, followers, following, company, and some data github.
 
@@ -46,7 +46,7 @@ You can do this on github account and get location, type, followers, following, 
 
 You can do this on ip address and get city, version ip, region, latitude, longitude, timezone, and some data ip. You cannot to get accurate ip for this.
 
-**-Information gathering account instagram**
+**-Information gathering instagram account**
 
 You can do this on instagram account and get followers, following, bio, profile picture, save post, and some data instagram. You cannot get information on private profiles.
 
