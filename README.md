@@ -33,12 +33,5 @@ python3 main.py -h
 - Information gathering in ip address
 - Information gathering in account instagram
 
-# Screenshot
-![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/170544327-ddd71936-a5c9-490c-ba4d-c26c8feb277f.png)
-
-# Libraries & Api
-- <a href="https://pypi.org/project/requests/">Requests</a>
-- <a href="https://api.github.com/">Api github</a>
-- <a href="https://pypi.org/project/phonenumbers/">Phone numbers</a>
-- <a href="https://ipapi.co/">Ipapi</a>
-- <a href="https://github.com/sc1341/InstagramOSINT">Instagram OSINT</a>
+# Need Update
+Need update again don't install my tool now!
