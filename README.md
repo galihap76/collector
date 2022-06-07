@@ -34,13 +34,20 @@ python3 main.py -h
 ```
 
 # Features 
-- Information gathering phone numbers
-- Information gathering account github
-- Information gathering ip address
-- Information gathering account instagram
+**Information gathering phone numbers**
+You can do this on some phone numbers and get isp, country, time zone, country code, national number and international number.
+
+**Information gathering account github**
+You can do this on github account and get location, type, followers, following, company, and some data github.
+
+**Information gathering ip address**
+You can do this on ip address and get city, version ip, region, latitude, longitude, timezone, and some data ip. You cannot to get accurate ip for this.
+
+**Information gathering account instagram**
+You can do this on instagram account and get followers, following, bio, profile picture, save post, and some data instagram. You cannot get information on private profiles.
 
 # Screenshots 📸
-![Screenshot_2022-05-27_01-29-49 1](https://user-images.githubusercontent.com/83481679/172418445-66430140-a905-430b-99af-da23817172c2.png) 
+![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
 ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
 ![instagram-collector 1](https://user-images.githubusercontent.com/83481679/172419798-98013374-d6ab-4f46-8e7b-6e4f8803a709.png)
