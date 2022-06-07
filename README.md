@@ -5,7 +5,7 @@
 
 Collector is a OSINT tool and information gathering. I build this tool for myself but you can use my tool for do OSINT.
 
-![carbon (1)](https://user-images.githubusercontent.com/83481679/172416739-1e3b4bbf-ac83-4206-b0d7-8156abaac9aa.png)
+![carbon (2)](https://user-images.githubusercontent.com/83481679/172465941-0fbb1581-0779-4635-83f4-3abc608cac19.png)
 
 # Tested On 
 - Windows
@@ -54,4 +54,4 @@ You can do this on instagram account and get followers, following, bio, profile 
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
 ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
-![instagram-collector 1](https://user-images.githubusercontent.com/83481679/172419798-98013374-d6ab-4f46-8e7b-6e4f8803a709.png)
+![InstagramOSINT-collector 1](https://user-images.githubusercontent.com/83481679/172464501-76efd7b9-878d-40a2-a0bc-8cc3bd982a01.png)
