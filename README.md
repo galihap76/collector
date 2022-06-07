@@ -36,7 +36,7 @@ python3 main.py -h
 # Features 
 **-Information gathering phone numbers**
 
-You can do this on some phone numbers and get isp, country, time zone, country code, national number and international number.
+You can do this on some phone numbers and get internet service provider, country, time zone, country code, national number and international number.
 
 **-Information gathering github account**
 
@@ -48,7 +48,7 @@ You can do this on ip address and get city, version ip, region, latitude, longit
 
 **-Information gathering instagram account**
 
-You can do this on instagram account and get followers, following, bio, profile picture, save post, and some data instagram. You cannot get information on private profiles.
+You can do this on instagram account and get followers, following, bio, profile picture, save posts, and some data instagram. You cannot get information on private profiles.
 
 # Screenshots 📸
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
