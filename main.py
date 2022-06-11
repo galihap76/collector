@@ -44,7 +44,6 @@ class COLLECTOR:
             ISP = carrier.name_for_number(phone_number, 'en')
             Time_zone = timezone.time_zones_for_number(phone_number) 
             Country = geocoder.country_name_for_number(phone_number, 'en')
-            Location = geocoder.description_for_number(phone_number, 'en') 
             print(f"[!] Fetching Phone Number : {args.number}")
             print(f"[+] {phone_number}")
             print(f"[+] International Format : {phone_number_international}")        
