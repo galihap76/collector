@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 try:
-    import argparse, requests, phonenumbers, subprocess
+    import argparse, requests, phonenumbers
     from instaloader import *
     from phonenumbers import carrier, geocoder, timezone
     
 # this when user forget to install some modules
 except ModuleNotFoundError:
-    import time, sys
+    import time, sys, subprocess
     print('[!] Collector need installed some modules')
     time.sleep(2)
     print('[!] Installing modules...')
