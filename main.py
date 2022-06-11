@@ -1,9 +1,6 @@
-import argparse, requests, instaloader, lib
-from lib.instaloader import *
-from lib.phonenumbers import carrier
-from lib.phonenumbers import geocoder
-from lib.phonenumbers import phonenumber
-from lib.phonenumbers import timezone
+import argparse, requests, phonenumbers, time, os
+from instaloader import *
+from phonenumbers import carrier, geocoder, timezone
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--number', type=str, help='do information gathering phone numbers')
@@ -31,9 +28,9 @@ class COLLECTOR:
     def Main(self):
         if args.number:
             try:
-                phone_number = lib.phonenumbers.parse(args.number)
-                phone_number_national = lib.phonenumbers.format_number(phone_number, lib.phonenumbers.PhoneNumberFormat.NATIONAL)
-                phone_number_international = lib.phonenumbers.format_number(phone_number, lib.phonenumbers.PhoneNumberFormat.INTERNATIONAL)
+                phone_number = phonenumbers.parse(args.number)
+                phone_number_national = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.NATIONAL)
+                phone_number_international = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
                 ISP = carrier.name_for_number(phone_number, 'en')
                 Time_zone = timezone.time_zones_for_number(phone_number) 
                 Country = geocoder.country_name_for_number(phone_number, 'en')
@@ -45,9 +42,7 @@ class COLLECTOR:
                 print(f"[+] Time Zone : {Time_zone}")
                 print(f"[+] ISP : {ISP}")
                 print(f"[+] Country Found : {Country}")
-            except KeyboardInterrupt:
-                print("[-] Exit")
-            except lib.phonenumbers.phonenumberutil.NumberParseException:
+            except phonenumbers.phonenumberutil.NumberParseException:
                 print("[-] Can't detect")
                 
         elif args.github:
@@ -60,8 +55,6 @@ class COLLECTOR:
                     print( f'[!] Fetching On Github Account : {username}')
                     for i in data:
                         print(f'[+] {i} : ',data[i])
-            except KeyboardInterrupt:
-                print('[-] Exit')
             except requests.exceptions.ConnectionError:
                 print("[-] Error connecting")
                        
@@ -73,8 +66,6 @@ class COLLECTOR:
                 data = response.json()
                 for i in data:
                     print(f'[+] {i} : ',data[i])
-            except KeyboardInterrupt:
-                print('[-] Exit')
             except requests.exceptions.ConnectionError:
                 print("[-] Error connecting")
                 
@@ -103,10 +94,18 @@ class COLLECTOR:
                 bot.download_profile(username, profile_pic_only = True)
                 for index, post in enumerate(posts, 1):
                     bot.download_post(post, target=f"{profile.username}_{index}")
-            except KeyboardInterrupt:
-                print('[-] Exit')
+            except:      
+                pass
                 
 #RUN THE COLLECTOR
 if __name__ == "__main__":
-    RUN = COLLECTOR()
-    RUN.Main()
+    try:
+        RUN = COLLECTOR()
+        RUN.Main()
+    except KeyboardInterrupt:
+        print('^C')
+    except ModuleNotFoundError:
+        print('[!] Collector need installed some modules')
+        time.sleep(2)
+        print('[!] Installing modules...')
+        os.system('pip install -r requirements.txt')
