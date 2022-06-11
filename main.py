@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 try:
-    import argparse, requests, phonenumbers
+    import argparse, requests, phonenumbers, instaloader
     from instaloader import *
     from phonenumbers import carrier, geocoder, timezone
     
