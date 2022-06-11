@@ -6,12 +6,12 @@ try:
     
 # this when user forget to install some modules
 except ModuleNotFoundError:
-    import time
+    import time, sys
     print('[!] Collector need installed some modules')
     time.sleep(2)
     print('[!] Installing modules...')
     subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
-    exit
+    sys.exit()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--number', type=str, help='do information gathering phone numbers')
