@@ -1,7 +1,17 @@
 #!/usr/bin/env python3
-import argparse, requests, phonenumbers, time, subprocess
-from instaloader import *
-from phonenumbers import carrier, geocoder, timezone
+try:
+    import argparse, requests, phonenumbers, subprocess
+    from instaloader import *
+    from phonenumbers import carrier, geocoder, timezone
+    
+# this when user forget to install some modules
+except ModuleNotFoundError:
+    import time
+    print('[!] Collector need installed some modules')
+    time.sleep(2)
+    print('[!] Installing modules...')
+    subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
+    exit
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--number', type=str, help='do information gathering phone numbers')
@@ -14,7 +24,7 @@ class COLLECTOR:
     def __init__(self):
         self.Banner()
         
-    #this for banner collector
+    # this for banner collector
     def Banner(self):
         print("""
            _ _           _
@@ -25,7 +35,7 @@ class COLLECTOR:
     
     """)
             
-    #this is main function
+    # this is main function
     def Main(self):
         if args.number:
             phone_number = phonenumbers.parse(args.number)
@@ -86,20 +96,15 @@ class COLLECTOR:
             for index, post in enumerate(posts, 1):
                 bot.download_post(post, target=f"{profile.username}_{index}")
                 
-#RUN THE COLLECTOR
+# run the collector
 if __name__ == "__main__":
     try:
         RUN = COLLECTOR()
         RUN.Main()
-    # Handling error
+    # handling error
     except KeyboardInterrupt:
         print('^C')
     except requests.exceptions.ConnectionError:
         print("[-] Error connecting")
     except phonenumbers.phonenumberutil.NumberParseException:
         print("[-] Can't detect")
-    except ModuleNotFoundError:
-        print('[!] Collector need installed some modules')
-        time.sleep(2)
-        print('[!] Installing modules...')
-        subprocess.run(['pip', 'install', '-r', 'requirements.txt'])
