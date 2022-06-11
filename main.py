@@ -1,16 +1,7 @@
-<<<<<<< HEAD
+#!/usr/bin/env python3
 import argparse, requests, phonenumbers, time, os
 from instaloader import *
 from phonenumbers import carrier, geocoder, timezone
-=======
-#!/usr/bin/env python3
-import argparse, requests, instaloader, lib
-from lib.instaloader import *
-from lib.phonenumbers import carrier
-from lib.phonenumbers import geocoder
-from lib.phonenumbers import phonenumber
-from lib.phonenumbers import timezone
->>>>>>> 43cb9612a01aca8b977001c1b3f80bd044d12a01
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', '--number', type=str, help='do information gathering phone numbers')
@@ -109,7 +100,6 @@ class COLLECTOR:
                 
 #RUN THE COLLECTOR
 if __name__ == "__main__":
-<<<<<<< HEAD
     try:
         RUN = COLLECTOR()
         RUN.Main()
@@ -120,7 +110,3 @@ if __name__ == "__main__":
         time.sleep(2)
         print('[!] Installing modules...')
         os.system('pip install -r requirements.txt')
-=======
-    RUN = COLLECTOR()
-    RUN.Main()
->>>>>>> 43cb9612a01aca8b977001c1b3f80bd044d12a01
