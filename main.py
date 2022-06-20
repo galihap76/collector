@@ -80,7 +80,6 @@ class COLLECTOR:
             business = profile.is_business_account
             url = profile.external_url
             business_type = profile.business_category_name
-            profile = instaloader.Profile.from_username(bot.context, username)
             print("[+] Username : ", profile.username)
             print("[+] User ID : ", profile.userid)
             print("[+] Number of Posts : ", profile.mediacount)
