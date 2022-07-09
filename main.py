@@ -138,7 +138,7 @@ class Collector:
             for index, post in enumerate(posts, 1):
                 bot.download_post(post, target=f"{profile.username}_{index}")
                 
-        elif args.login:
+        elif args.login.lower() == 'instagram':
             print("""
 [1] Add your username and password 
 [2] Change your username and password
