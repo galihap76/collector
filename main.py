@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 try:
-    import argparse, requests, phonenumbers, instaloader
+    import argparse, requests, phonenumbers, time, sys, os, re
     from instaloader import *
     from phonenumbers import carrier, geocoder, timezone
     
@@ -18,12 +18,13 @@ parser.add_argument('-n', '--number', type=str, help='do information gathering p
 parser.add_argument('-g', '--github', type=str, help='do information gathering github account')
 parser.add_argument('-i', '--ip', type=str, help='do information gathering ip address')
 parser.add_argument('-ig', '--instagram', type=str, help='do information gathering instagram account')
+parser.add_argument('-l', '--login', type=str, help='login your account instagram[REQUIRED]')
 args = parser.parse_args()
 
-class COLLECTOR:
+class Collector:
     def __init__(self):
         self.Banner()
-        
+
     # this for banner collector
     def Banner(self):
         print("""
@@ -34,7 +35,13 @@ class COLLECTOR:
  \___\___/|_|_|\___|\___|\__\___/|_|
     
     """)
-            
+           
+    def Asking_else(self):
+        print("[-] Collector can't understand what do you mean")
+        time.sleep(2)
+        print("[-] Collector has been stopped")
+        sys.exit()
+
     # this is main function
     def Main(self):
         if args.number:
@@ -44,6 +51,7 @@ class COLLECTOR:
             ISP = carrier.name_for_number(phone_number, 'en')
             Time_zone = timezone.time_zones_for_number(phone_number) 
             Country = geocoder.country_name_for_number(phone_number, 'en')
+            Location = geocoder.description_for_number(phone_number, 'en') 
             print(f"[!] Fetching Phone Number : {args.number}")
             print(f"[+] {phone_number}")
             print(f"[+] International Format : {phone_number_international}")        
@@ -58,7 +66,7 @@ class COLLECTOR:
             response = requests.get(url)
             if response.status_code == 200 and requests.codes.ok:
                 data = response.json()
-                print( f'[!] Fetching On Github Account : {username}')
+                print( f'[!] Fetching on github account : {username}')
                 for i in data:
                     print(f'[+] {i} : ',data[i])
                        
@@ -71,21 +79,57 @@ class COLLECTOR:
                 print(f'[+] {i} : ',data[i])
                 
         elif args.instagram:
-            print('[!] Waiting...')
+            print('[+] Waiting...')
             bot = instaloader.Instaloader()
+            username_read = open('username.txt', 'r')
+            password_read = open('password.txt', 'r')
             username = args.instagram
+
+            bot.login(username_read.read(), password_read.read())
             profile = instaloader.Profile.from_username(bot.context, username)
+            private = profile.is_private  
             posts = profile.get_posts()
-            private = profile.is_private
             business = profile.is_business_account
             url = profile.external_url
             business_type = profile.business_category_name
-            print("[+] Username : ", profile.username)
-            print("[+] User ID : ", profile.userid)
-            print("[+] Number of Posts : ", profile.mediacount)
-            print("[+] Followers : ", profile.followers)
-            print("[+] Following : ", profile.followees)
-            print("[+] Bio : ", profile.biography,profile.external_url)
+      
+            # check if private account
+            if private == True:
+                print("[!] Warning private account")
+                time.sleep(2)
+                print("[-] Collector can't download some posts")
+                time.sleep(2)
+
+            print(f"[+] Username : {profile.username}")
+            print(f"[+] User ID : {profile.userid}")
+            print(f"[+] Number of Posts : {profile.mediacount}")
+            print(f"[+] Followers : {profile.followers}")
+
+            # ask if user want to see some follower accounts but this if not private account
+            if private == False:
+                ask_followers = input('[!] Do you want to see some follower accounts?[y/n]: ')
+                if ask_followers.lower() == 'y':
+                    for follower in profile.get_followers():
+                        print(f'[+] {follower}')        
+                elif ask_followers.lower() == 'n':
+                    pass    
+                else:
+                    self.Asking_else()
+
+            print(f"[+] Following : {profile.followees}")  
+                
+            # ask if user want to see some following accounts but this if not private account
+            if private == False:     
+                ask_followings = input('[!] Do you want to see some following accounts?[y/n]: ')
+                if ask_followings.lower() == 'y':
+                    for following in profile.get_followees():
+                        print(f'[+] {following}')
+                elif ask_followings.lower() == 'n':
+                    pass
+                else:
+                    self.Asking_else()
+
+            print(f"[+] Bio : {profile.biography}")
             print(f'[+] Is business account : {business}')
             print(f'[+] Business type : {business_type}')
             print(f'[+] External url : {url}')
@@ -94,10 +138,50 @@ class COLLECTOR:
             for index, post in enumerate(posts, 1):
                 bot.download_post(post, target=f"{profile.username}_{index}")
                 
+        elif args.login:
+            print("""
+[1] Add your username and password 
+[2] Change your username and password
+            """)
+            choose = input('[+] Collector : ')
+            
+            if choose == '1':
+                # this for create your username and password
+                YOUR_USERNAME = input('[+] Enter your username : ')
+                YOUR_PASSWORD = input('[+] Enter your password : ')
+                
+                username_create = open("username.txt", "a")
+                username_create.write(f"{YOUR_USERNAME}")
+                username_create.close()
+                
+                password_create = open("password.txt", "a")
+                password_create.write(f"{YOUR_PASSWORD}")
+                password_create.close()
+                print('[+] Your username and password has been stored in : ',os.getcwd())
+                
+            elif choose == '2':
+                # this for change your username and password
+                YOUR_USERNAME = input('[+] Change your username : ')
+                YOUR_PASSWORD = input('[+] Change your password : ')
+                
+                username_change = open('username.txt', 'w')
+                username_change.write(f'{YOUR_USERNAME}')
+                username_change.close()
+                
+                password_change = open('password.txt', 'w')
+                password_change.write(f'{YOUR_PASSWORD}')
+                password_change.close()
+                print('[+] Success to change')
+                time.sleep(2)
+                print('[+] Your username and password has been stored in : ',os.getcwd())
+
+            else:
+                self.Asking_else()
+                                        
 # run the collector
 if __name__ == "__main__":
     try:
-        RUN = COLLECTOR()
+        RUN = Collector()
         RUN.Main()
     # handling error
     except KeyboardInterrupt:
@@ -106,3 +190,15 @@ if __name__ == "__main__":
         print("[-] Error connecting")
     except phonenumbers.phonenumberutil.NumberParseException:
         print("[-] Can't detect")
+    except ConnectionException:
+        import subprocess, time
+        print('[!] Your ip has been blocked')
+        time.sleep(2)
+        print('[!] Try to use proxy server')
+        subprocess.run([sys.executable], 'main.py', '-h')
+    except InvalidArgumentException:
+        print("[!] Collector can't login please login now")
+    except LoginRequiredException:
+        import subprocess, sys
+        print("[-] Login required")  
+        subprocess.run([sys.executable, 'main.py', '-h'])
