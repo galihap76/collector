@@ -3,9 +3,9 @@
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
 
-Collector is a OSINT tool and information gathering. I build this tool for myself but you can use my tool for do OSINT.
+Collector is a OSINT tool and information gathering. I build this tool for my fun and if you like do OSINT maybe you can try this tool.
 
-![carbon (2)](https://user-images.githubusercontent.com/83481679/172465941-0fbb1581-0779-4635-83f4-3abc608cac19.png)
+![carbon (6)](https://user-images.githubusercontent.com/83481679/178091895-24778f4a-5347-4365-aaa1-463fe4d63d50.png)
 
 # Tested On 
 - Windows
@@ -31,6 +31,10 @@ pip install -r requirements.txt
 # Usage 
 ```
 python3 main.py -h
+```
+# Login
+```
+python3 main.py -l instagram
 ```
 
 # Features 
