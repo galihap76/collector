@@ -191,11 +191,10 @@ if __name__ == "__main__":
     except phonenumbers.phonenumberutil.NumberParseException:
         print("[-] Can't detect")
     except ConnectionException:
-        import subprocess, time
+        import time
         print('[!] Your ip has been blocked')
-        time.sleep(2)
-        print('[!] Try to use proxy server')
-        subprocess.run([sys.executable], 'main.py', '-h')
+        print('[!] Collecter need break...')
+        time.sleep(30)
     except InvalidArgumentException:
         print("[!] Collector can't login please login now")
     except LoginRequiredException:
