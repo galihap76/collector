@@ -87,7 +87,7 @@ class Collector:
             password_read = open('password.txt', 'r')
             username = args.instagram
             
-            self.L.login(username_read.read(), password_read.read(), proxies=proxies)
+            self.L.login(username_read.read(), password_read.read())
             profile = instaloader.Profile.from_username(self.L.context, username)
             private = profile.is_private  
             posts = profile.get_posts()
