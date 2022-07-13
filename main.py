@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 try:
-    import argparse, requests, phonenumbers, time, sys, os, re
+    import argparse, requests, phonenumbers, time, sys, os, webbrowser
+    from os import name
+    from prettytable import PrettyTable
     from instaloader import *
     from phonenumbers import carrier, geocoder, timezone
     
@@ -18,12 +20,14 @@ parser.add_argument('-n', '--number', type=str, help='do information gathering p
 parser.add_argument('-g', '--github', type=str, help='do information gathering github account')
 parser.add_argument('-i', '--ip', type=str, help='do information gathering ip address')
 parser.add_argument('-ig', '--instagram', type=str, help='do information gathering instagram account')
+parser.add_argument('-u', '--url', type=str, help='do information gathering instagram account')
 parser.add_argument('-l', '--login', type=str, help='login your account instagram[REQUIRED]')
 args = parser.parse_args()
 
 class Collector:
     def __init__(self):
         self.Banner()
+        self.L = instaloader.Instaloader()
 
     # this for banner collector
     def Banner(self):
@@ -48,17 +52,17 @@ class Collector:
             phone_number = phonenumbers.parse(args.number)
             phone_number_national = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.NATIONAL)
             phone_number_international = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
-            ISP = carrier.name_for_number(phone_number, 'en')
-            Time_zone = timezone.time_zones_for_number(phone_number) 
-            Country = geocoder.country_name_for_number(phone_number, 'en')
-            Location = geocoder.description_for_number(phone_number, 'en') 
+            isp = carrier.name_for_number(phone_number, 'en')
+            time_zone = timezone.time_zones_for_number(phone_number)
+            location = geocoder.description_for_number(phone_number, 'en')
+
             print(f"[!] Fetching Phone Number : {args.number}")
             print(f"[+] {phone_number}")
             print(f"[+] International Format : {phone_number_international}")        
             print(f"[+] National Format : {phone_number_national}")           
-            print(f"[+] Time Zone : {Time_zone}")
-            print(f"[+] ISP : {ISP}")
-            print(f"[+] Country Found : {Country}")
+            print(f"[+] Time Zone : {time_zone}")
+            print(f"[+] ISP : {isp}")
+            print(f"[+] Location : {location}")
                 
         elif args.github:
             username = args.github
@@ -80,19 +84,19 @@ class Collector:
                 
         elif args.instagram:
             print('[+] Waiting...')
-            bot = instaloader.Instaloader()
             username_read = open('username.txt', 'r')
             password_read = open('password.txt', 'r')
             username = args.instagram
-
-            bot.login(username_read.read(), password_read.read())
-            profile = instaloader.Profile.from_username(bot.context, username)
+            
+            self.L.login(username_read.read(), password_read.read(), proxies=proxies)
+            profile = instaloader.Profile.from_username(self.L.context, username)
             private = profile.is_private  
             posts = profile.get_posts()
+            full_name = profile.full_name
             business = profile.is_business_account
             url = profile.external_url
             business_type = profile.business_category_name
-      
+             
             # check if private account
             if private == True:
                 print("[!] Warning private account")
@@ -101,30 +105,74 @@ class Collector:
                 time.sleep(2)
 
             print(f"[+] Username : {profile.username}")
+            print(f'[+] Fullname : {full_name}')
             print(f"[+] User ID : {profile.userid}")
-            print(f"[+] Number of Posts : {profile.mediacount}")
+            print(f"[+] Number of posts : {profile.mediacount}")
             print(f"[+] Followers : {profile.followers}")
 
             # ask if user want to see some follower accounts but this if not private account
             if private == False:
                 ask_followers = input('[!] Do you want to see some follower accounts?[y/n]: ')
                 if ask_followers.lower() == 'y':
+                    print('[+] Waiting...')
+                    Table_follower_accounts = PrettyTable(["FOLLOWER ACCOUNTS"])
                     for follower in profile.get_followers():
-                        print(f'[+] {follower}')        
+                        Table_follower_accounts.add_row([follower])
+                    print(Table_follower_accounts)        
                 elif ask_followers.lower() == 'n':
                     pass    
                 else:
                     self.Asking_else()
 
             print(f"[+] Following : {profile.followees}")  
-                
+
             # ask if user want to see some following accounts but this if not private account
             if private == False:     
                 ask_followings = input('[!] Do you want to see some following accounts?[y/n]: ')
                 if ask_followings.lower() == 'y':
+                    print('[+] Waiting...')
+                    Table_following_accounts = PrettyTable(["FOLLOWING ACCOUNTS"])
                     for following in profile.get_followees():
-                        print(f'[+] {following}')
+                        Table_following_accounts.add_row([following])
+                    print(Table_following_accounts)
                 elif ask_followings.lower() == 'n':
+                    pass
+                else:
+                    self.Asking_else()
+
+                ask_like_post = input('[!] Do you want to get likes of a post?[y/n]: ')
+
+                if ask_like_post.lower() == 'y':
+                    print(f'[!] You need to visit on username {username} and select one of the posts')
+                    time.sleep(2)
+                    url_instagram = f'https://www.instagram.com/{username}'
+                    for item in list(os.environ.keys()): 
+                        if "ANDROID" in item.upper():
+                            os.system("termux-open-url \""+url_instagram+"\"") 
+                    
+                    if name == "nt" or name == "posix":
+                        webbrowser.open(url_instagram, new=1, autoraise=True)
+
+                    while True:
+                        url_post = input('[!] Please copy the shortlink [https://www.instagram.com/p/(JUST COPY THE SHORTLINK)]: ')
+
+                        if url_post == '':
+                            self.Asking_else()           
+                        else:
+                            print('[+] Waiting...')
+                            P = instaloader.Post.from_shortcode(self.L.context, url_post)
+                            Table = PrettyTable(["PEOPLE WHO LIKED THE POST"])
+                            for like in P.get_likes():
+                                Table.add_row([like.username])
+                            print(Table)
+                        ask_again = input('[!] Do you want do again?[y/n] : ')
+
+                        if ask_again.lower() == 'y':
+                            continue
+                        elif ask_again.lower() == 'n':
+                            break
+                        
+                elif ask_like_post.lower() == 'n':
                     pass
                 else:
                     self.Asking_else()
@@ -134,11 +182,22 @@ class Collector:
             print(f'[+] Business type : {business_type}')
             print(f'[+] External url : {url}')
             print(f'[+] Is private : {private}')
-            bot.download_profile(username, profile_pic_only = True)
-            for index, post in enumerate(posts, 1):
-                bot.download_post(post, target=f"{profile.username}_{index}")
+        
+            if private == False:
+                downloads = input('[!] Do you want to download all posts and profile picture?[y/n]: ')
+                if downloads.lower() == 'y':
+                    print('[+] Ready to download all posts and profile picture...')
+                    self.L.download_profile(username, profile_pic_only = True)
+                    for index, post in enumerate(posts, 1):
+                        self.L.download_post(post, target=f"{profile.username}_{index}")
+                    print('[+] Results has been stored in : ',os.getcwd())
+                    print('[+] Successfully for scraping')
+                elif downloads.lower() == 'n':
+                    print('[+] Successfully for scraping')
+                else:
+                    self.Asking_else()
                 
-        elif args.login.lower() == 'instagram':
+        elif args.login:
             print("""
 [1] Add your username and password 
 [2] Change your username and password
@@ -190,13 +249,20 @@ if __name__ == "__main__":
         print("[-] Error connecting")
     except phonenumbers.phonenumberutil.NumberParseException:
         print("[-] Can't detect")
-    except ConnectionException:
-        import time
-        print('[!] Your ip has been blocked')
-        print('[!] Collecter need break...')
-        time.sleep(30)
+        print('[!] Example : +62xxx')
     except InvalidArgumentException:
+        import subprocess, time
+        from os import system, name
         print("[!] Collector can't login please login now")
+        time.sleep(2)
+        # this mean for clear screen on windows
+        if name == "nt":
+            system('cls')
+
+        # this mean for clear screen on mac and linux
+        elif name == 'posix':
+            system('clear')
+        subprocess.run([sys.executable, 'main.py', '-l', 'instagram'])
     except LoginRequiredException:
         import subprocess, sys
         print("[-] Login required")  
