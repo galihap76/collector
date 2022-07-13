@@ -20,7 +20,6 @@ parser.add_argument('-n', '--number', type=str, help='do information gathering p
 parser.add_argument('-g', '--github', type=str, help='do information gathering github account')
 parser.add_argument('-i', '--ip', type=str, help='do information gathering ip address')
 parser.add_argument('-ig', '--instagram', type=str, help='do information gathering instagram account')
-parser.add_argument('-u', '--url', type=str, help='do information gathering instagram account')
 parser.add_argument('-l', '--login', type=str, help='login your account instagram[REQUIRED]')
 args = parser.parse_args()
 
