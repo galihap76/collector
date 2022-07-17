@@ -6,7 +6,7 @@
 
 Collector is a OSINT tool and information gathering. I build this tool for my fun and if you like do OSINT maybe you can try this tool.
 
-![carbon (7)](https://user-images.githubusercontent.com/83481679/179388257-f9267dc0-7fcb-439c-a916-cc8edd904550.png)
+![carbon (8)](https://user-images.githubusercontent.com/83481679/179395150-68dc835d-67a5-4073-9e2b-5d5d299b8ec4.png)
 
 # Install 
 ```
@@ -15,22 +15,35 @@ cd collector
 pip install -r requirements.txt
 ```
 
-# Usage 
+# OPTIONS
 ```
+# Help 
 python3 main.py -h
-```
-# Instagram Account
-**Login**
-```
+
+# Phone number
+python3 main.py -n <phone number>
+
+# Github account
+python3 main.py -g <github account>
+
+# Ip address
+python3 main.py -i <ip address>
+
+# Instagram account
+python3 main.py -ig <instagram account>
+
+# Login account instagram
 python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
-```
-**Change**
-```
+
+# Change account instagram
 python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
+
+# Check update
+python3 main.py --update
 ```
 
 # Features 
-**-Information gathering phone numbers**
+**Information gathering phone numbers**
 * Country Code
 * Internation format
 * National format
@@ -44,7 +57,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Node id
 * Avatar url
 * Gravatar url
-* url
+* Url
 * Html url
 * Followers url
 * Following url
@@ -72,7 +85,8 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Created at
 * Updated at
 
-**Note** : You cannot for tracking someone and cannot get accurate ip
+**Note** 
+> You cannot for tracking someone and cannot get accurate public ip.
 
 **Information gathering ip address**
 * Ip
@@ -115,7 +129,8 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Stories
 * Download posts & profile picture
 
-**Note** : You cannot for do on private account. If you do download highlights or post or maybe stories and profile picture. Those will be stored in current directory.
+**Note** : 
+> You cannot for do on private account. If you do download highlights or post or maybe stories and profile picture, those will be stored in current directory. Please keep track your request while web scraping instagram. If not you will be given blocking ip, checkpoint account and suspended account.
 
 # Screenshots 📸
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
