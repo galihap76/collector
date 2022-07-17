@@ -1,6 +1,6 @@
 # Collector 🔎 🕵️‍♂️
 
-![version-3.7](https://img.shields.io/badge/version-3.7-green)
+![version-3.8](https://img.shields.io/badge/version-3.8-green)
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
 
@@ -63,4 +63,4 @@ You can do this on instagram account and get followers, following, bio, profile 
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
 ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
-![InstagramOSINT-collector 1](https://user-images.githubusercontent.com/83481679/172464501-76efd7b9-878d-40a2-a0bc-8cc3bd982a01.png)
+![res](https://user-images.githubusercontent.com/83481679/179392188-77bd6d25-ecbf-4882-8e7f-bd356ac585f0.png)
