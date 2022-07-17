@@ -19,11 +19,12 @@ pip install -r requirements.txt
 ```
 python3 main.py -h
 ```
-# Login Instagram Account
+# Instagram Account
+**Login**
 ```
 python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
-# Change Instagram Account
+**Change**
 ```
 python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
@@ -37,7 +38,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * ISP
 * Location
 
-**-Information gathering github account**
+**Information gathering github account**
 * Login
 * Id
 * Node id
@@ -71,7 +72,9 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Created at
 * Updated at
 
-**-Information gathering ip address**
+**Note** : You cannot for tracking someone and cannot get accurate ip
+
+**Information gathering ip address**
 * Ip
 * Version
 * City
@@ -100,7 +103,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Asn
 * Org
 
-**-Information gathering instagram account**
+**Information gathering instagram account**
 * Username
 * Fullname
 * User id
@@ -111,6 +114,8 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Highlights
 * Stories
 * Download posts & profile picture
+
+**Note** : You cannot for do on private account. If you do download highlights or post or maybe stories and profile picture. Those will be stored in current directory.
 
 # Screenshots 📸
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
