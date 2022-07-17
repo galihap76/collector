@@ -2,7 +2,7 @@
 VERSION = '3.8'
 
 try:
-    import argparse, requests, phonenumbers, time, sys, subprocess, os, webbrowser, folium
+    import argparse, requests, phonenumbers, time, sys, os, webbrowser, folium
     from json import loads
     from packaging import version
     from os import name
@@ -262,7 +262,7 @@ class Collector:
                     self.Asking_else()
 
             # check highlights if available
-            download_highlights = input(f'[!] If you see a highlights on username {username} you can download it. Are you see a highlights?[y/n]: ')
+            download_highlights = input(f'[!] If you see a highlights on username {username} you can download it. Are you see a highlights or want to download?[y/n]: ')
             if download_highlights.lower() == 'y':
                 print('[+] Ready to download highlights...')
                 user_highlights = profile.userid  
