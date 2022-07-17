@@ -1,5 +1,5 @@
 #!/usr/bin/env python3 
-VERSION = '1.5.0'
+VERSION = '1.1.0'
 
 try:
     import argparse, requests, phonenumbers, time, sys, os, webbrowser
@@ -99,12 +99,13 @@ class Collector:
 
                 if version.parse(version_collector) > version.parse(VERSION):
                     print(f'[!] New update available : {version_collector}')
-                    ask_update = input('Do you want to update?[y/n]: ')
+                    ask_update = input('[!] Do you want to update?[y/n]: ')
 
                     if ask_update.lower() == 'y':
                         newVersion = requests.get("https://raw.githubusercontent.com/galihap76/collector/main/main.py")
                         open("main.py", "wb").write(newVersion.content)
-                        print("[+] New version downloaded restarting in 5 seconds")
+                        print("[+] New version downloaded")
+                        print('[!] Collector will be restarting in 5 seconds...')
                         time.sleep(5)
                         quit()
                     else:
