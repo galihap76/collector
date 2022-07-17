@@ -35,10 +35,10 @@ python3 main.py -ig <instagram account>
 # Check update
 python3 main.py --update
 
-# Login account instagram
+# Login instagram account
 python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
 
-# Change account instagram
+# Change instagram account
 python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
 
