@@ -1,6 +1,6 @@
 # Collector 🔎 🕵️‍♂️
 
-[![version-1.1.0](https://img.shields.io/badge/version-1.1.0-green)]
+[![version-1.1.0](https://img.shields.io/badge/version-1.1.0-green)
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
 
@@ -33,9 +33,13 @@ pip install -r requirements.txt
 ```
 python3 main.py -h
 ```
-# Login
+# Login Account Instagram
 ```
-python3 main.py -l instagram
+python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
+```
+# Change Account Instagram
+```
+python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
 
 # Features 
