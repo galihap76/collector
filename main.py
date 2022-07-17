@@ -2,7 +2,9 @@
 VERSION = '1.5.0'
 
 try:
-    import argparse, requests, phonenumbers, time, sys, os, webbrowser, urllib.request
+    import argparse, requests, phonenumbers, time, sys, os, webbrowser
+    from json import loads
+    from packaging import version
     from os import name
     from prettytable import PrettyTable
     from instaloader import *
@@ -87,23 +89,28 @@ class Collector:
                 print(f'[+] {i} : ',data[i])
 
         elif args.update:
-            URL = urllib.request.urlopen('https://raw.githubusercontent.com/galihap76/collector/main/main.py')
+            META_URL = 'https://raw.githubusercontent.com/galihap76/collector/main/metadata.json'
+            req_meta = requests.get(META_URL, timeout=5)
 
-            data = URL.read()
-            if (data == VERSION):
-                print("[+] Collector is up to date")
-            else:
-                print("[!] Collector is not up to date")
-                print("[!] Collector is on version : " + VERSION)
-                ask_update = input('Do you want to update?[y/n]: ')
-                if ask_update.lower() == 'y':
-                    newVersion = requests.get("https://raw.githubusercontent.com/galihap76/collector/main/main.py")
-                    open("main.py", "wb").write(newVersion.content)
-                    print("[+] New version downloaded restarting in 5 seconds")
-                    time.sleep(5)
-                    quit()
+            if req_meta.status_code == 200:
+                metadata = req_meta.txt
+                json_data = loads(metadata)
+                version_collector = json_data['version']
+
+                if version.parse(version_collector) > version_collector.parse(VERSION):
+                    print(f'[!] New update available : {version_collector}')
+                    ask_update = input('Do you want to update?[y/n]: ')
+
+                    if ask_update.lower() == 'y':
+                        newVersion = requests.get("https://raw.githubusercontent.com/galihap76/collector/main/main.py")
+                        open("main.py", "wb").write(newVersion.content)
+                        print("[+] New version downloaded restarting in 5 seconds")
+                        time.sleep(5)
+                        quit()
+                    else:
+                        pass
                 else:
-                    pass
+                    print('[+] Already up to date')
                 
         elif args.instagram:
             print('[+] Waiting...')
