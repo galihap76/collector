@@ -1,8 +1,8 @@
 #!/usr/bin/env python3 
-VERSION = '3.7'
+VERSION = '3.8'
 
 try:
-    import argparse, requests, phonenumbers, time, sys, os, webbrowser
+    import argparse, requests, phonenumbers, time, sys, subprocess, os, webbrowser, folium
     from json import loads
     from packaging import version
     from os import name
@@ -84,9 +84,35 @@ class Collector:
             ip = args.ip
             url = f'https://ipapi.co/{ip}/json/'
             response = requests.get(url)
-            data = response.json()
-            for i in data:
-                print(f'[+] {i} : ',data[i])
+
+            if response.status_code == 200:    
+                data = response.json()
+                lat = data['latitude']
+                lon = data['longitude']
+                for i in data:
+                    print(f'[+] {i} : ',data[i])
+
+                coordinat = [lat, lon]
+                map = folium.Map(location=coordinat, zoom_start=15)
+                folium.Marker(location=coordinat, popup='Location').add_to(map)
+                map.save('map.html')
+
+                print(f'[+] Success to create a map : map.html')
+                ask_map = input('[!] Do you want to see?[y/n]: ')
+                if ask_map.lower() == 'y':
+                    map_html = 'map.html'
+                    dir_map = os.getcwd()
+                    redirect_map = f'{dir_map}/{map_html}'
+
+                    for item in list(os.environ.keys()): 
+                        if "ANDROID" in item.upper():
+                            os.system("termux-open-url \""+redirect_map+"\"") 
+                    
+                    if name == "nt" or name == "posix":
+                        webbrowser.open(redirect_map, new=1, autoraise=True)
+
+                else:
+                    pass
 
         elif args.update:
             META_URL = 'https://raw.githubusercontent.com/galihap76/collector/main/metadata.json'
