@@ -6,7 +6,7 @@
 
 Collector is a OSINT tool and information gathering. I build this tool for my fun and if you like do OSINT maybe you can try this tool.
 
-![carbon (9)](https://user-images.githubusercontent.com/83481679/179398026-5bfd22db-baa2-45a5-aad8-bade96f04747.png)
+![carbon (10)](https://user-images.githubusercontent.com/83481679/179400490-0ae38198-4792-4984-806c-c48b13806479.png)
 
 # Install 
 ```
@@ -44,7 +44,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 
 # Features 
 **Information gathering phone numbers**
-* Country Code
+* Country code
 * National number
 * International format
 * National format
