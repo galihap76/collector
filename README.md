@@ -45,7 +45,8 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 # Features 
 **Information gathering phone numbers**
 * Country Code
-* Internation format
+* National number
+* International format
 * National format
 * Time zone
 * ISP
@@ -85,9 +86,6 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Created at
 * Updated at
 
-**Note** 
-> You cannot for tracking someone and cannot get accurate public ip.
-
 **Information gathering ip address**
 * Ip
 * Version
@@ -116,6 +114,9 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Asn
 * Org
 
+**Note** 
+> You cannot for tracking someone and cannot get accurate public ip.
+
 **Information gathering instagram account**
 * Username
 * Fullname
@@ -133,7 +134,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 * Stories
 * Download posts & profile picture
 
-**Note** : 
+**Note**  
 > You cannot for do on private account. If you do download highlights or post or maybe stories and profile picture, those will be stored in current directory. Please keep track your request while web scraping instagram. If not you will be given blocking ip, checkpoint account and suspended account.
 
 # Screenshots 📸
