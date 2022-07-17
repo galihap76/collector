@@ -6,7 +6,7 @@
 
 Collector is a OSINT tool and information gathering. I build this tool for my fun and if you like do OSINT maybe you can try this tool.
 
-![carbon (8)](https://user-images.githubusercontent.com/83481679/179395150-68dc835d-67a5-4073-9e2b-5d5d299b8ec4.png)
+![carbon (9)](https://user-images.githubusercontent.com/83481679/179398026-5bfd22db-baa2-45a5-aad8-bade96f04747.png)
 
 # Install 
 ```
