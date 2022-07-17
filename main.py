@@ -1,5 +1,5 @@
 #!/usr/bin/env python3 
-VERSION = '1.1.0'
+VERSION = '3.7'
 
 try:
     import argparse, requests, phonenumbers, time, sys, os, webbrowser
