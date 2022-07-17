@@ -93,7 +93,7 @@ class Collector:
             req_meta = requests.get(META_URL, timeout=5)
 
             if req_meta.status_code == 200:
-                metadata = req_meta.txt
+                metadata = req_meta.text
                 json_data = loads(metadata)
                 version_collector = json_data['version']
 
