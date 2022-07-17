@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3 
 VERSION = '1.5.0'
 
 try:
@@ -87,7 +87,7 @@ class Collector:
                 print(f'[+] {i} : ',data[i])
 
         elif args.update:
-            URL = urllib.request.urlopen('https://github.com/galihap76/collector/blob/main/main.py')
+            URL = urllib.request.urlopen('https://raw.githubusercontent.com/galihap76/collector/main/main.py')
 
             data = URL.read()
             if (data == VERSION):
@@ -97,7 +97,7 @@ class Collector:
                 print("[!] Collector is on version : " + VERSION)
                 ask_update = input('Do you want to update?[y/n]: ')
                 if ask_update.lower() == 'y':
-                    newVersion = requests.get("https://github.com/galihap76/collector/blob/main/main.py")
+                    newVersion = requests.get("https://raw.githubusercontent.com/galihap76/collector/main/main.py")
                     open("main.py", "wb").write(newVersion.content)
                     print("[+] New version downloaded restarting in 5 seconds")
                     time.sleep(5)
