@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+VERSION = '1.5.0'
+
 try:
-    import argparse, requests, phonenumbers, time, sys, os, webbrowser
+    import argparse, requests, phonenumbers, time, sys, os, webbrowser, urllib.request
     from os import name
     from prettytable import PrettyTable
     from instaloader import *
@@ -20,13 +22,16 @@ parser.add_argument('-n', '--number', type=str, help='do information gathering p
 parser.add_argument('-g', '--github', type=str, help='do information gathering github account')
 parser.add_argument('-i', '--ip', type=str, help='do information gathering ip address')
 parser.add_argument('-ig', '--instagram', type=str, help='do information gathering instagram account')
-parser.add_argument('-l', '--login', type=str, help='login your account instagram[REQUIRED]')
+parser.add_argument('--update', action='store_true', help='check update')
+parser.add_argument('-l', '--login', action='store_true', help='login your account instagram[REQUIRED]')
+parser.add_argument('-c', '--change', action='store_true', help='change your username and password')
+parser.add_argument('-u', '--username', type=str, help='your username')
+parser.add_argument('-p', '--password', type=str, help='your password')
 args = parser.parse_args()
 
 class Collector:
     def __init__(self):
         self.Banner()
-        self.L = instaloader.Instaloader()
 
     # this for banner collector
     def Banner(self):
@@ -80,21 +85,42 @@ class Collector:
             data = response.json()
             for i in data:
                 print(f'[+] {i} : ',data[i])
+
+        elif args.update:
+            URL = urllib.request.urlopen('https://github.com/galihap76/collector/blob/main/main.py')
+
+            data = URL.read()
+            if (data == VERSION):
+                print("[+] Collector is up to date")
+            else:
+                print("[!] Collector is not up to date")
+                print("[!] Collector is on version : " + VERSION)
+                ask_update = input('Do you want to update?[y/n]: ')
+                if ask_update.lower() == 'y':
+                    newVersion = requests.get("https://github.com/galihap76/collector/blob/main/main.py")
+                    open("main.py", "wb").write(newVersion.content)
+                    print("[+] New version downloaded restarting in 5 seconds")
+                    time.sleep(5)
+                    quit()
+                else:
+                    pass
                 
         elif args.instagram:
             print('[+] Waiting...')
             username_read = open('username.txt', 'r')
             password_read = open('password.txt', 'r')
+            L = instaloader.Instaloader()
             username = args.instagram
-            
-            self.L.login(username_read.read(), password_read.read())
-            profile = instaloader.Profile.from_username(self.L.context, username)
+
+            L.login(username_read.read(), password_read.read())
+            profile = instaloader.Profile.from_username(L.context, username)
             private = profile.is_private  
             posts = profile.get_posts()
             full_name = profile.full_name
             business = profile.is_business_account
             url = profile.external_url
             business_type = profile.business_category_name
+            check_story = profile.has_public_story
              
             # check if private account
             if private == True:
@@ -114,10 +140,12 @@ class Collector:
                 ask_followers = input('[!] Do you want to see some follower accounts?[y/n]: ')
                 if ask_followers.lower() == 'y':
                     print('[+] Waiting...')
+                    total_followers = profile.followers
                     Table_follower_accounts = PrettyTable(["FOLLOWER ACCOUNTS"])
                     for follower in profile.get_followers():
                         Table_follower_accounts.add_row([follower])
-                    print(Table_follower_accounts)        
+                    print(Table_follower_accounts)   
+                    print(f'[+] Total followers : {total_followers}')     
                 elif ask_followers.lower() == 'n':
                     pass    
                 else:
@@ -130,10 +158,12 @@ class Collector:
                 ask_followings = input('[!] Do you want to see some following accounts?[y/n]: ')
                 if ask_followings.lower() == 'y':
                     print('[+] Waiting...')
+                    total_followings = profile.followees
                     Table_following_accounts = PrettyTable(["FOLLOWING ACCOUNTS"])
                     for following in profile.get_followees():
                         Table_following_accounts.add_row([following])
                     print(Table_following_accounts)
+                    print(f'[+] Total followings : {total_followings}')
                 elif ask_followings.lower() == 'n':
                     pass
                 else:
@@ -153,17 +183,20 @@ class Collector:
                         webbrowser.open(url_instagram, new=1, autoraise=True)
 
                     while True:
-                        url_post = input('[!] Please copy the shortlink [https://www.instagram.com/p/(JUST COPY THE SHORTLINK)]: ')
+                        url_post = input('[!] Please copy the shortlink [https://www.instagram.com/p/(JUST COPY THE SHORTLINK)/]: ')
 
                         if url_post == '':
                             self.Asking_else()           
                         else:
                             print('[+] Waiting...')
-                            P = instaloader.Post.from_shortcode(self.L.context, url_post)
+                            P = instaloader.Post.from_shortcode(L.context, url_post)
                             Table = PrettyTable(["PEOPLE WHO LIKED THE POST"])
+                            total_likes = P.likes
                             for like in P.get_likes():
                                 Table.add_row([like.username])
                             print(Table)
+                            print(f'[+] Total likes : {total_likes}')
+
                         ask_again = input('[!] Do you want do again?[y/n] : ')
 
                         if ask_again.lower() == 'y':
@@ -181,61 +214,72 @@ class Collector:
             print(f'[+] Business type : {business_type}')
             print(f'[+] External url : {url}')
             print(f'[+] Is private : {private}')
-        
+
+            # check story if available
+            if check_story == True:
+                download_stories = input(f'[!] The username {username} already have stories. Do you want to downloads?[y/n]: ')
+                if download_stories.lower() == 'y':
+                    print('[+] Ready to download stories...')
+                    L.download_stories(userids=[profile.userid])
+
+                elif download_stories.lower() == 'n':
+                    pass
+                else:
+                    self.Asking_else()
+
+            # check highlights if available
+            download_highlights = input(f'[!] If you see a highlights on username {username} you can download it. Are you see a highlights?[y/n]: ')
+            if download_highlights.lower() == 'y':
+                print('[+] Ready to download highlights...')
+                user_highlights = profile.userid  
+                for highlight in L.get_highlights(user_highlights):
+                    for item in highlight.get_items():   
+                        L.download_storyitem(item, '{}/{}'.format(highlight.owner_username, highlight.title))
+                    
+            elif download_highlights.lower() == 'n':
+                pass
+            else:
+                self.Asking_else()
+
+            # ask if user want to download posts and profile picture but this if not private account
             if private == False:
                 downloads = input('[!] Do you want to download all posts and profile picture?[y/n]: ')
                 if downloads.lower() == 'y':
                     print('[+] Ready to download all posts and profile picture...')
-                    self.L.download_profile(username, profile_pic_only = True)
+                    L.download_profile(username, profile_pic_only = True)
                     for index, post in enumerate(posts, 1):
-                        self.L.download_post(post, target=f"{profile.username}_{index}")
-                    print('[+] Results has been stored in : ',os.getcwd())
-                    print('[+] Successfully for scraping')
+                        L.download_post(post, target=f"{profile.username}_{index}")
+                    print('[+] For all results has been stored in : ',os.getcwd())
+                    print('[+] Success for scraping')             
+         
                 elif downloads.lower() == 'n':
-                    print('[+] Successfully for scraping')
+                    print('[!] You can check in directory ',os.getcwd(), 'from all results web scraping if you do download higlights or other(s)')
+                    print('[+] Success for scraping')
                 else:
                     self.Asking_else()
                 
         elif args.login:
-            print("""
-[1] Add your username and password 
-[2] Change your username and password
-            """)
-            choose = input('[+] Collector : ')
-            
-            if choose == '1':
-                # this for create your username and password
-                YOUR_USERNAME = input('[+] Enter your username : ')
-                YOUR_PASSWORD = input('[+] Enter your password : ')
-                
                 username_create = open("username.txt", "a")
-                username_create.write(f"{YOUR_USERNAME}")
+                username_create.write(args.username)
                 username_create.close()
                 
                 password_create = open("password.txt", "a")
-                password_create.write(f"{YOUR_PASSWORD}")
+                password_create.write(args.password)
                 password_create.close()
                 print('[+] Your username and password has been stored in : ',os.getcwd())
-                
-            elif choose == '2':
-                # this for change your username and password
-                YOUR_USERNAME = input('[+] Change your username : ')
-                YOUR_PASSWORD = input('[+] Change your password : ')
-                
+
+        elif args.change:
                 username_change = open('username.txt', 'w')
-                username_change.write(f'{YOUR_USERNAME}')
+                username_change.write(args.username)
                 username_change.close()
                 
                 password_change = open('password.txt', 'w')
-                password_change.write(f'{YOUR_PASSWORD}')
+                password_change.write(args.password)
                 password_change.close()
                 print('[+] Success to change')
                 time.sleep(2)
                 print('[+] Your username and password has been stored in : ',os.getcwd())
-
-            else:
-                self.Asking_else()
-                                        
+         
 # run the collector
 if __name__ == "__main__":
     try:
@@ -261,7 +305,7 @@ if __name__ == "__main__":
         # this mean for clear screen on mac and linux
         elif name == 'posix':
             system('clear')
-        subprocess.run([sys.executable, 'main.py', '-l', 'instagram'])
+        subprocess.run([sys.executable, 'main.py', '-h'])
     except LoginRequiredException:
         import subprocess, sys
         print("[-] Login required")  
