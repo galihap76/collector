@@ -8,24 +8,10 @@ Collector is a OSINT tool and information gathering. I build this tool for my fu
 
 ![carbon (7)](https://user-images.githubusercontent.com/83481679/179388257-f9267dc0-7fcb-439c-a916-cc8edd904550.png)
 
-# Tested On 
-- Windows
-- Kali Linux
-- Termux
-
 # Install 
 ```
 git clone https://github.com/galihap76/collector.git
 cd collector 
-pip install -r requirements.txt
-```
-For termux :
-```
-pkg update && pkg upgrade
-pkg install python3
-pkg install git
-git clone https://github.com/galihap76/collector.git
-cd collector
 pip install -r requirements.txt
 ```
 
@@ -33,31 +19,98 @@ pip install -r requirements.txt
 ```
 python3 main.py -h
 ```
-# Login Account Instagram
+# Login Instagram Account
 ```
 python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
-# Change Account Instagram
+# Change Instagram Account
 ```
 python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ```
 
 # Features 
 **-Information gathering phone numbers**
-
-You can do this on some phone numbers and get internet service provider, country, time zone, country code, national number and international number.
+* Country Code
+* Internation format
+* National format
+* Time zone
+* ISP
+* Location
 
 **-Information gathering github account**
-
-You can do this on github account and get location, type, followers, following, company, and some data github.
+* Login
+* Id
+* Node id
+* Avatar url
+* Gravatar url
+* url
+* Html url
+* Followers url
+* Following url
+* Gists url
+* Starred url
+* Subscriptions url
+* Organizations url
+* Repos url
+* Events url
+* Received events url
+* Type
+* Site admin
+* Name
+* Company
+* Blog
+* Location
+* Email
+* Hireable
+* Bio
+* Twitter username
+* Public repos
+* Public gists
+* Followers
+* Following
+* Created at
+* Updated at
 
 **-Information gathering ip address**
-
-You can do this on ip address and get city, version ip, region, latitude, longitude, timezone, and some data ip. You cannot to get accurate ip for this.
+* Ip
+* Version
+* City
+* Region
+* Region code
+* Country
+* Country name
+* Country code
+* Country code iso3
+* Country capital
+* Country tld
+* Continent code
+* In ue
+* Postal
+* Latitude
+* Longitude
+* Timezone
+* Timezone
+* Utc offset
+* Country calling code
+* Currency
+* Currency name
+* Languages
+* Country are
+* Country population
+* Asn
+* Org
 
 **-Information gathering instagram account**
-
-You can do this on instagram account and get followers, following, bio, profile picture, save posts, and some data instagram. You cannot get information on private profiles.
+* Username
+* Fullname
+* User id
+* Number of posts
+* Followers
+* Following
+* Likes
+* Highlights
+* Stories
+* Download posts & profile picture
 
 # Screenshots 📸
 ![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
