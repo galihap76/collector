@@ -1,5 +1,6 @@
 # Collector 🔎 🕵️‍♂️
 
+[![version-1.1.0](https://img.shields.io/badge/version-1.1.0-green)]
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
 
