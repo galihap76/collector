@@ -15,7 +15,7 @@ cd collector
 pip install -r requirements.txt
 ```
 
-# OPTIONS
+# Options
 ```
 # Help 
 python3 main.py -h
@@ -32,14 +32,14 @@ python3 main.py -i <ip address>
 # Instagram account
 python3 main.py -ig <instagram account>
 
+# Check update
+python3 main.py --update
+
 # Login account instagram
 python3 main.py --login -u <YOUR USERNAME> -p <YOUR PASSWORD>
 
 # Change account instagram
 python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
-
-# Check update
-python3 main.py --update
 ```
 
 # Features 
@@ -106,13 +106,12 @@ python3 main.py --update
 * Latitude
 * Longitude
 * Timezone
-* Timezone
 * Utc offset
 * Country calling code
 * Currency
 * Currency name
 * Languages
-* Country are
+* Country area
 * Country population
 * Asn
 * Org
@@ -124,8 +123,13 @@ python3 main.py --update
 * Number of posts
 * Followers
 * Following
-* Likes
+* Bio
+* Is business account
+* Business type
+* External url
+* Is private
 * Highlights
+* Likes
 * Stories
 * Download posts & profile picture
 
