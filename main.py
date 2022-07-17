@@ -97,7 +97,7 @@ class Collector:
                 json_data = loads(metadata)
                 version_collector = json_data['version']
 
-                if version.parse(version_collector) > version_collector.parse(VERSION):
+                if version.parse(version_collector) > version.parse(VERSION):
                     print(f'[!] New update available : {version_collector}')
                     ask_update = input('Do you want to update?[y/n]: ')
 
