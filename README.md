@@ -142,3 +142,6 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
 ![res](https://user-images.githubusercontent.com/83481679/179392188-77bd6d25-ecbf-4882-8e7f-bd356ac585f0.png)
+
+# Contributing are welcome 💡
+If you found bug or add new feature please fork this repo and pull merge. I will approved if suitable on add new feature.
