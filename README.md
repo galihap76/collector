@@ -4,7 +4,7 @@
 [![GPLv3](https://img.shields.io/badge/license-GPLv3-blue)](https://img.shields.io/badge/license-GPLv3-blue)
 [![Python3](https://img.shields.io/badge/language-Python3-red)](https://img.shields.io/badge/language-Python3-red)
 
-Collector is a OSINT tool and information gathering. I build this tool for my fun and if you like do OSINT maybe you can try this tool.
+Collector is a OSINT tool and information gathering. I build this tool for my fun and you can use this tool for do OSINT. In github account and instagram account you can find information by username.
 
 ![carbon (10)](https://user-images.githubusercontent.com/83481679/179400490-0ae38198-4792-4984-806c-c48b13806479.png)
 
@@ -24,13 +24,13 @@ python3 main.py -h
 python3 main.py -n <phone number>
 
 # Github account
-python3 main.py -g <github account>
+python3 main.py -g <target username>
 
 # Ip address
 python3 main.py -i <ip address>
 
 # Instagram account
-python3 main.py -ig <instagram account>
+python3 main.py -ig <target username>
 
 # Check update
 python3 main.py --update
@@ -138,10 +138,10 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 > You cannot for do on private account. If you do download highlights or post or maybe stories and profile picture, those will be stored in current directory. Please keep track your request while web scraping instagram. If not you will be given blocking ip, checkpoint account and suspended account.
 
 # Screenshots 📸
-![phone-collector 1](https://user-images.githubusercontent.com/83481679/172454033-15d9130b-d609-45fa-b6e4-9f88d742e310.png)
+![phone-collector](https://user-images.githubusercontent.com/83481679/179906125-01bf07b1-fb12-479c-bd2e-7727278a67ff.png)
 ![github-collector 1](https://user-images.githubusercontent.com/83481679/172418954-b9df11e9-9914-4265-b7b5-c3908438ad11.png)
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
-![res](https://user-images.githubusercontent.com/83481679/179392188-77bd6d25-ecbf-4882-8e7f-bd356ac585f0.png)
+![instagram-collector](https://user-images.githubusercontent.com/83481679/179906132-69d7e8a1-0ffe-4776-82af-e784b263b7f0.png)
 
 # Contributing 💡
 Contributing are welcome, if you found bug or add new feature please fork this repo and pull request. I will approved if suitable on add new feature.
