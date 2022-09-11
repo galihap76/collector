@@ -143,5 +143,7 @@ python3 main.py --change -u <YOUR USERNAME> -p <YOUR PASSWORD>
 ![ipapi-collector 1](https://user-images.githubusercontent.com/83481679/172419647-dcc84c90-5ee9-4c62-ad55-9bb198060f39.png) 
 ![instagram-collector](https://user-images.githubusercontent.com/83481679/179906132-69d7e8a1-0ffe-4776-82af-e784b263b7f0.png)
 
-# Note
-I repeat again this tool for my fun and now at 11/09/2022 i can't do update again this tool. Why? because i already busy now for do my real work. I know my code is not good and need to refactoring code. I found bug in my tool when i using my termux and when i git clone this tool. So, if you want to fix the bug or contribute just pull request and i will accept if your code is suitable.
+# Note 📌
+I repeat again this tool for my fun and now at 11/09/2022 i can't do update again this tool. Why? because i already busy now for do my real work and other reason is too much eat time if i do update this tool again. I know my code is not good and need to refactoring code. 
+
+I found bug in my tool when i using my termux and when i git clone this tool on other computers. So, if you want to fix the bug or contribute just pull request and i will accept if your code is suitable. Thank you!
